@@ -10,7 +10,7 @@ WIDTH=600
 HEIGHT=600
 FPS=30
 #ball Properties
-ball_acc=0.5
+ball_acc=0.9
 ball_friction=-0.12
 
 #colous

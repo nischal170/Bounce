@@ -4,6 +4,7 @@ from Settings import *
 from sprites import *
 import os
 
+
 class Game:
     def __init__(self):
 
@@ -46,6 +47,9 @@ class Game:
         if hits:
             self.ball.pos.y=hits[0].rect.top
             self.ball.vel.y=0
+            #self.ball.pos.y=hits[0].rect.bottom
+            #self.ball.vel.y=0
+
 
     def events(self):
         #game Loop-events
@@ -55,6 +59,8 @@ class Game:
                 if self.playing:
                     self.playing=False
                 self.Bouncing = False
+
+            #self.ball.bounce()
 
     def draw(self):
         #Game Loop -draw
