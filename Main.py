@@ -6,14 +6,27 @@ import os
 
 class Game:
     def __init__(self):
-        #initialize game window,etc
-        pg.init()
+
+        pg.init()#initialize game window,etc
         pg.mixer.init()#initialize mixer for all the sound effects and music in game
         self.screen= pg.display.set_mode((WIDTH, HEIGHT))  # set the window size to 800*600
         self.clock = pg.time.Clock()
+        self.Bouncing=True
 
     def new(self):
         self.all_sprites = pg.sprite.Group()  # group of all sprites(entities of the games)
+        self.platforms=pg.sprite.Group()
+        self.ball=Ball()
+
+        self.all_sprites.add(self.ball)
+        p1=Platform(0,HEIGHT-40,WIDTH,40)
+        self.all_sprites.add(p1)
+        self.platforms.add(p1)
+        p2=Platform(WIDTH/2-50,HEIGHT*3/4,100,20)
+        self.all_sprites.add(p2)
+        self.platforms.add(p2)
+
+        self.run()
 
     def run(self):
         #game loop
@@ -29,6 +42,10 @@ class Game:
     def update(self):
         #Game Loop-Update
         self.all_sprites.update()  # update all the entities after key press
+        hits=pg.sprite.spritecollide(self.ball ,self.platforms,False)
+        if hits:
+            self.ball.pos.y=hits[0].rect.top
+            self.ball.vel.y=0
 
     def events(self):
         #game Loop-events
@@ -37,7 +54,7 @@ class Game:
             if event.type == pg.QUIT:
                 if self.playing:
                     self.playing=False
-                self.running = False
+                self.Bouncing = False
 
     def draw(self):
         #Game Loop -draw
@@ -52,9 +69,9 @@ class Game:
         pass
 
 
-g=Game()
+g=Game()#creating Object of the class
 g.show_start_screen()
-while g.running:
+while g.Bouncing:
     g.new()
     g.show_go_screen()
 
