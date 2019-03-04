@@ -4,15 +4,19 @@
 
 TITLE="Bounce"
 #game display
-
+FONT_NAME='Algerian'
 
 WIDTH=600
 HEIGHT=600
 FPS=30
 #ball Properties
-ball_acc=0.9
+ball_acc=1
 ball_friction=-0.12
+PLAYER_JUMP=20
 
+
+#starting platforms
+PLATFORM_LIST=[(0,HEIGHT-40,WIDTH,40),(WIDTH/2-50,HEIGHT*3/4,100,20),(125,HEIGHT-350,100,20),(210,34,56,59)]
 #colous
 WHITE=(255,255,255)
 RED=(255,0,0)
