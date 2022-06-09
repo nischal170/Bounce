@@ -52,7 +52,8 @@ class Game:
                 self.ball.pos.y=hits[0].rect.top   #sets to whatever we hit to its top
                 self.ball.vel.y=0
                 #if(hits[0].rect.bottom):
-                    #self.ball.vel.y -=abs(self.ball.vel.y)
+                    #self.ball.pos.y  = 300
+                        #-=abs(self.ball.vel.y)
 
         #if player reaches top 1/4 of screen
         if self.ball.rect.top<=HEIGHT/4:
@@ -75,10 +76,10 @@ class Game:
 
 
 
-        while len(self.platforms)<6: #no of platforms in a screen
-            width=random.randrange(50,100)
+        while len(self.platforms)< 9: #no of platforms in a screen
+            width=random.randrange(80,150)
 
-            p=Platform(random.randrange(0,WIDTH-width),random.randrange(-75,-30),width,20)
+            p=Platform(random.randrange(0,WIDTH-width),0,width,20)
             self.platforms.add(p)
             self.all_sprites.add(p)
 
